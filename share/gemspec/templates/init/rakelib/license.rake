@@ -13,7 +13,7 @@ file "LICENSES/.info" => "gemspec.gemspec" do |t|
   File.write(t.name, "This directory contains the licenses you can use with this gem\n")
 end
 
-desc "Fill LICENSES/ with licenses according to gemspec.gemspec"
+desc "Fill LICENSES/ with licenses according to gemspec.gemspec and view them"
 task 'license' => 'LICENSES/.info' do
   sh "cd LICENSES/; less *"
 end

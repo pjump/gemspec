@@ -13,11 +13,11 @@ Gem::Specification.new do |s|
 
   Gemspec.boilerplate(s)
 
-  #s.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
+  s.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
 
   #####Must change
-  s.summary       = %q{Gemspec aims to streamline and DRY up the creation of ruby packages AKA gems}
-  s.description   = File.read('README.md')
+  s.summary       = %q{TODO: Write a summary}
+  s.description   = %q{TODO: Write a description}
   s.licenses      = %w[MIT]
 
 
@@ -26,8 +26,8 @@ Gem::Specification.new do |s|
   s.homepage      = "https://github.com/#{`git config github.username`}/#{s.name}.git"
   ###################################
 
-  s.add_dependency 'activesupport', '4.2.1'
-  s.add_dependency 'memoist', '0.12.0'
-  s.add_dependency 'rake', '~> 10.4'
+  #Dependencies
+  s.add_development_dependency 'rake', '~> 10.4'
+  s.add_development_dependency 'minitest-documentation'
 
 end
