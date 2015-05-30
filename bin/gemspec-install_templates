@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
+if ARGV.size != 1 || !File.directory?(ARGV[0])
+  warn \
+  "
+  Usage: gemspec-install_templates where_to/
+  "
+else
+  template_source = File.expand_path('../../share/gemspec/templates', `gem which gemspec`.chomp)
+  p template_source
+  system('rsync', '-aiv', template_source + '/', ARGV[0])
+end
+
+
+
+
