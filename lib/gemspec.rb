@@ -37,7 +37,7 @@ module Gemspec
     #Specify common paths and files
     s.test_files    = Git::ls_files.grep(%r{^(test|s|features)/})
     s.files         = Git::ls_files.reject { |f| f.match(%r{^(test|s|features)/}) }
-    s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
+    s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
     s.require_paths = ["lib"]
 
     #Authors are all committers or `git config user.name` if the former is empty
