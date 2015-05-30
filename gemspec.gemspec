@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   #####Must change
   s.summary       = %q{Gemspec aims to streamline and DRY up the creation of ruby packages AKA gems}
-  s.description   = File.read('README.md')
+  s.description   = File.open('README.md').gets('.')
   s.licenses      = %w[MIT]
 
 
