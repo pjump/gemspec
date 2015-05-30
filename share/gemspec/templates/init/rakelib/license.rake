@@ -4,7 +4,7 @@ $gemspec = Gem::Specification.load(Dir["*.gemspec"][0])
 file "LICENSES/.info" => "gemspec.gemspec" do |t|
   mkdir_p "LICENSES"
 
-  licenses_dir = File.expand_path('../../licenses/', `gem which gemspec`.chomp)
+  licenses_dir = File.expand_path('../../share/gemspec/licenses/', `gem which gemspec`.chomp)
   $? == 0 or licenses_dir = File.expand_path('licenses/')
 
   $gemspec.licenses.each do |license|
