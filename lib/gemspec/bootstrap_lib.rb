@@ -24,7 +24,7 @@ module Gemspec
     path = "lib/#{config["namespaced_path"]}"
     versionfilerb = "#{path}/version.rb"
     versionfile = "#{path}/VERSION"
-    human_versionfile = "#{path}/HUMAN_VERSION"
+    human_versionfile = "#{path}/VERSION_FOR_HUMANS"
     rbfile = "#{path}.rb"
 
     FileUtils.mkdir_p path
@@ -69,7 +69,7 @@ version.rb.tt: |
   <%= '  '*i %>module <%= c %>
   <%- end -%>
   <%= '  '*config["constant_array"].size %>VERSION = File.read(File.expand_path("../VERSION", __FILE__))
-  <%= '  '*config["constant_array"].size %>HUMAN_VERSION = File.read(File.expand_path("../HUMAN_VERSION", __FILE__))
+  <%= '  '*config["constant_array"].size %>VERSION_FOR_HUMANS = File.read(File.expand_path("../VERSION_FOR_HUMANS", __FILE__))
   <%- (config["constant_array"].size-1).downto(0) do |i| -%>
   <%= '  '*i %>end
   <%- end -%>

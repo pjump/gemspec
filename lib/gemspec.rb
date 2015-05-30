@@ -28,11 +28,11 @@ module Gemspec
     #This won't overwrite existing files
     Gemspec::bootstrap_lib!(s)
 
-    #Get VERSION and HUMAN_VERSION from the version file
+    #Get VERSION and VERSION_FOR_HUMANS from the version file
     require "#{s.metadata["namespaced_path"]}/version"
     spec_module         = Object.const_get(s.metadata["constant_name"])
     s.version        = spec_module::VERSION
-    s.metadata["human_version"] = spec_module::HUMAN_VERSION
+    s.metadata["human_version"] = spec_module::VERSION_FOR_HUMANS
 
     #Specify common paths and files
     s.test_files    = Git::ls_files.grep(%r{^(test|s|features)/})
