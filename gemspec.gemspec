@@ -17,13 +17,14 @@ Gem::Specification.new do |s|
 
   #####Must change
   s.summary       = %q{Gemspec aims to streamline and DRY up the creation of ruby packages AKA gems}
-  s.description   = File.read('README.md')
+  s.description   = File.open('README.md').gets('.')
   s.licenses      = %w[MIT]
 
 
   #####Unlikely to change
-  s.email         = [ `git config user.email` ]
-  s.homepage      = "https://github.com/#{`git config github.username`}/#{s.name}.git"
+  s.email         = [ `git config user.email`.chomp ]
+  s.homepage      = "https://github.com/#{`git config github.username`.chomp}/#{s.name}.git"
+  $? == 0 or s.homepage = nil
   ###################################
 
   s.add_dependency 'activesupport', '4.2.1'

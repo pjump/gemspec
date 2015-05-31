@@ -22,8 +22,9 @@ Gem::Specification.new do |s|
 
 
   #####Unlikely to change
-  s.email         = [ `git config user.email` ]
-  s.homepage      = "https://github.com/#{`git config github.username`}/#{s.name}.git"
+  s.email         = [ `git config user.email`.chomp ]
+  s.homepage      = "https://github.com/#{`git config github.username`.chomp}/#{s.name}.git"
+  $? == 0 or s.homepage = nil
   ###################################
 
   #Dependencies
