@@ -20,6 +20,8 @@ Gem::Specification.new do |s|
   s.description   = File.open('README.md').gets('.')
   s.licenses      = %w[MIT]
 
+  #s.files += Dir["share/gemspec/templates/**"]
+  s.files << "share/gemspec/templates/init/Gemfile"
 
   #####Unlikely to change
   s.email         = [ `git config user.email`.chomp ]
