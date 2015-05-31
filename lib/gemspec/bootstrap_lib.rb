@@ -16,6 +16,7 @@ module Gemspec
 
   def bootstrap_lib!(spec)
 
+    system('git', 'status') || system(*%w[git init .])
     config = {}
     config["constant_name"] = spec.metadata["constant_name"] || camelize(metadata["namespaced_path"])
     config["namespaced_path"] = spec.metadata["namespaced_path"] || spec.name.tr('-', '/')

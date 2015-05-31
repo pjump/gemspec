@@ -3,7 +3,6 @@
 require 'memoist'
 require 'super_hash'
 
-    Dir.exist?('.git') || system(*%w[git init .])
 module Gemspec
   module Git
     extend Memoist
