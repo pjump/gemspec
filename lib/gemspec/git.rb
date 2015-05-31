@@ -30,6 +30,12 @@ module Gemspec
       authors = `git log > /dev/null 2>&1 && git shortlog -sn`.split("\n").map {|a| a.sub(/^[\d\s]*/, '') }
       authors = (authors.empty? && [ `git config user.name` ]) || authors
     end
-  end
 
+    def cdroot!
+      unless (cdup=`git rev-parse --show-cdup`.chomp) == ""
+        Dir.chdir cdup
+      end
+    end
+
+  end
 end
