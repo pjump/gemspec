@@ -14,7 +14,6 @@ module Gemspec
 
   #####These settings shouldn't change as long as you follow conventions
   def boilerplate(s)
-    Dir.exist?('.git') || system('git', 'init', '.')
 
     #Naming according to conventions
     s.metadata["namespaced_path"] = s.name.tr('-', '/')
