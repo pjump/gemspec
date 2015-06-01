@@ -1,0 +1,4 @@
+/pkg/
+/Gemfile.lock
+/LICENSES/
+/share/gemspec/templates/init/Gemfile
