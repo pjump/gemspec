@@ -38,5 +38,63 @@ The latter creates and views licenses specified in the gemspec (no need to have 
 
 ## Usage
 
-  gem install gemspec
+### Installation
 
+  gem install gemspec
+  #Install templates somewhere
+  mkdir -p ~/.gemspec/
+  gemspec-install_templates ~/.gemspec/
+
+### Starting a project
+  
+  mkdir project/
+  cd $_
+  git flow init
+  rsync -avi ~/.gemspec/init/ .
+
+  #Add a summary and description
+  $EDITOR gemspec.gemspec
+
+  #Scaffold out lib
+  ruby gemspec.gemspec
+
+  #Build gem
+  rake gem
+
+  #Run test stubs
+  rake test
+
+### Renameing a project
+
+  mv project/ something_something-whatever/
+  cd $_
+  #Scaffold out new lib:
+  ruby gemspec.gemspec
+  #Manually fix code in lib/ -- and that’s it; all other references are dynamic
+
+### Render and view-licenses specified in gemspec.gemspec
+  
+  rake view-licenses
+
+### Bump a version
+  
+  #First install gemspec-bump
+  gem install gemspec-bump
+
+  #This’ll bump the last version numbers, commit the change, merge the commit into master, tag it, and merge back
+  gemspec-bump +1.+1
+
+
+## Contributing
+
+  Highly welcome. The project is very bare-bones right now.
+
+## Goals
+  
+  - DRY-ness:
+    All info in one place
+  - Convention over configuration for basic gem structure that no-one every changes anyway
+  - Flexibility/customizability
+    -gems should be easy to rename and parts of a gem should be usable in another gem (no hardcoded references)
+  - packaging should get out of the way as much as possible -- it’s your code that matters
+  - straightforward workflow
