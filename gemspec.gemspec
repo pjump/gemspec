@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   #####Must change
   s.summary       = %q{Gemspec aims to streamline and DRY up the creation of ruby packages AKA gems}
   s.description   = File.open('README.md').gets('.')
-  s.licenses      = %w[MIT]
+  s.licenses      = %w[GPL-2.0]
 
   #s.files += Dir["share/gemspec/templates/**"]
   s.files << "share/gemspec/templates/init/Gemfile"
