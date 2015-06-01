@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   ###################################
 
   #Dependencies
+  s.add_dependency 'gemspec', '~> 0.2'
   s.add_development_dependency 'rake', '~> 10.4'
   s.add_development_dependency 'minitest-documentation'
 

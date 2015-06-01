@@ -14,7 +14,6 @@ module Gemspec
 
   #####These settings shouldn't change as long as you follow conventions
   def boilerplate(s)
-    Dir.exist?('.git') || system('git', 'init', '.')
 
     #Naming according to conventions
     s.metadata["namespaced_path"] = s.name.tr('-', '/')
@@ -43,4 +42,13 @@ module Gemspec
     #Authors are all committers or `git config user.name` if the former is empty
     s.authors       = Git::ls_authors
   end
+
+  memoize def current
+    spec = nil
+    Git.cdroot do 
+      spec = Gem::Specification.load('gemspec.gemspec')
+    end
+    spec
+  end
+
 end

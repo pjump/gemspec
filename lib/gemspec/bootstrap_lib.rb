@@ -16,6 +16,7 @@ module Gemspec
 
   def bootstrap_lib!(spec)
 
+    system('git', 'status', out: '/dev/null') || system(*%w[git init .])
     config = {}
     config["constant_name"] = spec.metadata["constant_name"] || camelize(metadata["namespaced_path"])
     config["namespaced_path"] = spec.metadata["namespaced_path"] || spec.name.tr('-', '/')
@@ -31,8 +32,10 @@ module Gemspec
 
     template_write(rbfile, config, templates["newgem.tt"])  unless File.exist?(rbfile)
     template_write(versionfilerb, config, templates["version.rb.tt"])  unless File.exist?(versionfilerb)
-    File.write(versionfile, '0.1.0') unless File.exist?(versionfile)
-    File.write(human_versionfile, '0.1.0') unless File.exist?(human_versionfile)
+    File.write(versionfile, '0.1.0' + "\n") unless File.exist?(versionfile)
+    File.symlink(versionfile, "VERSION") unless File.exist?("VERSION")
+    File.write(human_versionfile, '0.1' + "\n") unless File.exist?(human_versionfile)
+    File.symlink(human_versionfile, "VERSION_FOR_HUMANS") unless File.exist?("VERSION_FOR_HUMANS")
   end
 
   memoize def templates
@@ -68,8 +71,8 @@ version.rb.tt: |
   <%- config["constant_array"].each_with_index do |c,i| -%>
   <%= '  '*i %>module <%= c %>
   <%- end -%>
-  <%= '  '*config["constant_array"].size %>VERSION = File.read(File.expand_path("../VERSION", __FILE__))
-  <%= '  '*config["constant_array"].size %>VERSION_FOR_HUMANS = File.read(File.expand_path("../VERSION_FOR_HUMANS", __FILE__))
+  <%= '  '*config["constant_array"].size %>VERSION = File.read(File.expand_path("../VERSION", __FILE__)).chomp
+  <%= '  '*config["constant_array"].size %>VERSION_FOR_HUMANS = File.read(File.expand_path("../VERSION_FOR_HUMANS", __FILE__)).chomp
   <%- (config["constant_array"].size-1).downto(0) do |i| -%>
   <%= '  '*i %>end
   <%- end -%>

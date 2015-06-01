@@ -18,8 +18,10 @@ Gem::Specification.new do |s|
   #####Must change
   s.summary       = %q{Gemspec aims to streamline and DRY up the creation of ruby packages AKA gems}
   s.description   = File.open('README.md').gets('.')
-  s.licenses      = %w[MIT]
+  s.licenses      = %w[GPL-2.0]
 
+  #s.files += Dir["share/gemspec/templates/**"]
+  s.files << "share/gemspec/templates/init/Gemfile"
 
   #####Unlikely to change
   s.email         = [ `git config user.email`.chomp ]
@@ -30,5 +32,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'activesupport', '4.2.1'
   s.add_dependency 'memoist', '0.12.0'
   s.add_dependency 'rake', '~> 10.4'
+  s.add_dependency 'minitest-documentation'
 
 end
