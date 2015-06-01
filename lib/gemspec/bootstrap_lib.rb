@@ -34,7 +34,7 @@ module Gemspec
     template_write(versionfilerb, config, templates["version.rb.tt"])  unless File.exist?(versionfilerb)
     File.write(versionfile, '0.1.0' + "\n") unless File.exist?(versionfile)
     File.symlink(versionfile, "VERSION") unless File.exist?("VERSION")
-    File.write(human_versionfile, '0.1.0' + "\n") unless File.exist?(human_versionfile)
+    File.write(human_versionfile, '0.1' + "\n") unless File.exist?(human_versionfile)
     File.symlink(human_versionfile, "VERSION_FOR_HUMANS") unless File.exist?("VERSION_FOR_HUMANS")
   end
 
