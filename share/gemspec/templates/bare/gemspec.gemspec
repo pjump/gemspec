@@ -13,12 +13,12 @@ Gem::Specification.new do |s|
 
   Gemspec.boilerplate(s)
 
-  s.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
+  #s.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
 
   #####Must change
   s.summary       = %q{TODO: Write a summary}
   s.description   = %q{TODO: Write a description}
-  s.licenses      = %w[MIT]
+  s.licenses      = %w[GPL-2.0]
 
 
   #####Unlikely to change
@@ -29,6 +29,8 @@ Gem::Specification.new do |s|
 
   #Dependencies
   s.add_development_dependency 'rake', '~> 10.4'
+  s.add_development_dependency 'minitest'
   s.add_development_dependency 'minitest-documentation'
+  s.add_development_dependency 'rspec'
 
 end
