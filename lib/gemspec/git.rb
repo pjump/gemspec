@@ -30,10 +30,26 @@ module Gemspec
       authors = (authors.empty? && [ `git config user.name` ]) || authors
     end
 
-    def cdroot!
-      unless (cdup=`git rev-parse --show-cdup`.chomp) == ""
+    #Go to the repo's root (and back if a block is given)
+
+    def cdroot!(&blk)
+      cdup = '.' if (cdup=`git rev-parse --show-cdup`.chomp) == ""
+      if blk
+        Dir.chdir cdup, &blk
+      else
         Dir.chdir cdup
       end
+    end
+
+    #Go to the repo's root -- block must be given
+    
+    def cdroot(&blk)
+      return unless blk
+      cdroot! &blk
+    end
+
+    def clean?
+      `git status --porcelain`.chomp == ""
     end
 
   end

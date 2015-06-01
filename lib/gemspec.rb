@@ -42,4 +42,13 @@ module Gemspec
     #Authors are all committers or `git config user.name` if the former is empty
     s.authors       = Git::ls_authors
   end
+
+  memoize def current
+    spec = nil
+    Git.cdroot do 
+      spec = Gem::Specification.load('gemspec.gemspec')
+    end
+    spec
+  end
+
 end
