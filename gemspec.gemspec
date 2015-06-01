@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'activesupport', '4.2.1'
   s.add_dependency 'memoist', '0.12.0'
   s.add_dependency 'rake', '~> 10.4'
-  s.add_dependency 'minitest-documentation'
 
+  s.add_development_dependency 'minitest-documentation'
+  s.add_development_dependency 'rspec'
 end
