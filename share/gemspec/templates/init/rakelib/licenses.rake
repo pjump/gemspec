@@ -12,9 +12,9 @@ end
 directory "LICENSES"
 gemspec = Gem::Specification.load(Dir["*.gemspec"][0])
 
-def render_erb(gemspec, src, dest)
+def render_erb(s, src, dest)
      File.write(dest, 
-                ERB.new(File.read(src), nil, '-').result()
+                ERB.new(File.read(src), nil, '-').result(binding)
                )
 end
 
